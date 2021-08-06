@@ -4,7 +4,10 @@
   "description": "A JS todo-list application that groups todos inside project lists. Set up with webpack for modern JS capabilities using DOM manipulation.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
