@@ -2,6 +2,8 @@ console.log('Hello todo app');
 
 const projectList = [];
 
+const allprojects = document.getElementById('all-projects');
+
 class Project {
   constructor(name) {
     this.name = name;
@@ -13,12 +15,40 @@ class Project {
   }
 }
 
+function createProjectCard(project) {
+  const div = document.createElement('div');
+  div.classList.add('m-2', 'p-1');
+  const projectName = document.createElement('span');
+  projectName.textContent = project.name;
+  const addProjectTodo = document.createElement('button');
+  addProjectTodo.classList.add('btn', 'btn-success', 'm-1');
+  addProjectTodo.textContent = '+';
+  div.appendChild(projectName);
+  div.appendChild(addProjectTodo);
+  return div;
+}
+
+function displayAllProjects() {
+  if (!projectList.length) {
+    const p2 = document.createElement('p');
+    p2.textContent = 'There are currently no books';
+    allprojects.appendChild(p2);
+  } else {
+    projectList.forEach((project) => {
+      const projectCard = createProjectCard(project);
+      allprojects.appendChild(projectCard);
+    });
+  }
+}
+
 const createProject = () => {
   const name = document.getElementById('name').value;
   const newProject = new Project(name);
   console.log(newProject);
   projectList.push(newProject);
   console.log(projectList);
+  allprojects.textContent = '';
+  displayAllProjects();
   return newProject;
 };
 
