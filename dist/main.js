@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log('Hello todo app');\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("console.log('Hello todo app');\n\nclass Project {\n  constructor(name) {\n    this.name = name;\n    this.listOfTodos = [];\n  }\n\n  get toDoList() {\n    return this.listOfTodos;\n  }\n}\n\nconst createProject = (name) => {\n  const newProject = new Project(name);\n  return newProject;\n};\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ })
 
