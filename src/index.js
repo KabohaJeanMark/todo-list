@@ -13,8 +13,17 @@ class Project {
   }
 }
 
-const createProject = (name) => {
+const createProject = () => {
+  const name = document.getElementById('name').value;
   const newProject = new Project(name);
+  console.log(newProject);
   projectList.push(newProject);
+  console.log(projectList);
   return newProject;
 };
+
+const projectCreateForm = document.getElementById('createProjectForm');
+projectCreateForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  createProject();
+});

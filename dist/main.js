@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log('Hello todo app');\n\nclass Project {\n  constructor(name) {\n    this.name = name;\n    this.listOfTodos = [];\n  }\n\n  get toDoList() {\n    return this.listOfTodos;\n  }\n}\n\nconst createProject = (name) => {\n  const newProject = new Project(name);\n  return newProject;\n};\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("console.log('Hello todo app');\n\nconst projectList = [];\n\nclass Project {\n  constructor(name) {\n    this.name = name;\n    this.listOfTodos = [];\n  }\n\n  get toDoList() {\n    return this.listOfTodos;\n  }\n}\n\nconst createProject = () => {\n  const name = document.getElementById('name').value;\n  const newProject = new Project(name);\n  console.log(newProject);\n  projectList.push(newProject);\n  console.log(projectList);\n  return newProject;\n};\n\nconst projectCreateForm = document.getElementById('createProjectForm');\nprojectCreateForm.addEventListener('submit', (e) => {\n  e.preventDefault();\n  createProject();\n});\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ })
 
