@@ -1,5 +1,7 @@
 console.log('Hello todo app');
 
+const projectList = [];
+
 class Project {
   constructor(name) {
     this.name = name;
@@ -13,5 +15,6 @@ class Project {
 
 const createProject = (name) => {
   const newProject = new Project(name);
+  projectList.push(newProject);
   return newProject;
 };
