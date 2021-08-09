@@ -1,3 +1,5 @@
+import { todoForm, createToDo } from './todo';
+
 class Project {
   constructor(name) {
     this.name = name;
@@ -25,9 +27,14 @@ function createProjectCard(project) {
   const addProjectTodo = document.createElement('button');
   addProjectTodo.classList.add('btn', 'btn-success', 'm-1');
   addProjectTodo.textContent = '+';
-  // addProjectTodo.addEventListener('click', () => {
-  //   addToDo(project);
-  // });
+  addProjectTodo.addEventListener('click', () => {
+    todoForm.style.display = 'block';
+    todoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      createToDo(project);
+    });
+  });
+
   div.appendChild(projectName);
   div.appendChild(addProjectTodo);
   return div;
