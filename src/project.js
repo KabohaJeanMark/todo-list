@@ -1,4 +1,4 @@
-import { todoForm, createToDo } from './todo';
+import { newTodoForm, displayTodos } from './todo';
 
 class Project {
   constructor(name) {
@@ -14,7 +14,6 @@ class Project {
 const projectList = [];
 
 const defaultProject = new Project('Default');
-console.log(defaultProject);
 projectList.push(defaultProject);
 
 const allprojects = document.getElementById('all-projects');
@@ -24,15 +23,14 @@ function createProjectCard(project) {
   div.classList.add('m-2', 'p-1');
   const projectName = document.createElement('span');
   projectName.textContent = project.name;
+  projectName.addEventListener('click', () => {
+    displayTodos(project);
+  });
   const addProjectTodo = document.createElement('button');
   addProjectTodo.classList.add('btn', 'btn-success', 'm-1');
   addProjectTodo.textContent = '+';
   addProjectTodo.addEventListener('click', () => {
-    todoForm.style.display = 'block';
-    todoForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      createToDo(project);
-    });
+    newTodoForm(project);
   });
 
   div.appendChild(projectName);
@@ -56,9 +54,7 @@ function displayAllProjects() {
 const createProject = () => {
   const name = document.getElementById('name').value;
   const newProject = new Project(name);
-  console.log(newProject);
   projectList.push(newProject);
-  console.log(projectList);
   allprojects.textContent = '';
   displayAllProjects();
   return newProject;

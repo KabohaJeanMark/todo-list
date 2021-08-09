@@ -33,27 +33,9 @@
       </div>
       <div class="todos-container">
         TODOS
+        <div id="todo-form"></div>
 
-        <form autocomplete="off" class="m-2" id="createTodoForm">
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" aria-describedby="todo title" placeholder="Enter todo title" required>
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" aria-describedby="todo description" placeholder="Enter todo description" required>
-          </div>
-          <div class="form-group">
-            <label for="dueDate">Due Date</label>
-            <input type="date" class="form-control" id="dueDate" aria-describedby="todo dueDate" placeholder="Enter todo dueDate" required>
-          </div>
-          <div class="form-group">
-            <label for="priority">Priority</label>
-            <input type="number" min="1" max="3" class="form-control" id="priority" aria-describedby="todo priority" placeholder="Enter todo priority" required>
-          </div>
-          <button class="btn btn-success" type="submit" id="createTodoBtn">CREATE PROJECT</button>
-        </form>
-
+        <div class="todos" id="projectTodos"></div>
 
       </div>
       <div class="todo-details">
