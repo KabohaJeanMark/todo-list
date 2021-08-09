@@ -11,6 +11,10 @@ class Project {
 
 const projectList = [];
 
+const defaultProject = new Project('Default');
+console.log(defaultProject);
+projectList.push(defaultProject);
+
 const allprojects = document.getElementById('all-projects');
 
 function createProjectCard(project) {
