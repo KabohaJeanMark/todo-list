@@ -46,14 +46,21 @@ function newTodoForm(project) {
   const titleInput = document.createElement('input');
   titleInput.setAttribute('type', 'text');
   titleInput.setAttribute('id', 'title');
+  titleInput.setAttribute('placeholder', 'Enter title');
+  titleInput.className = 'form-control';
   const descriptionInput = document.createElement('input');
   descriptionInput.setAttribute('type', 'text');
   descriptionInput.setAttribute('id', 'description');
+  descriptionInput.setAttribute('placeholder', 'Enter description');
+  descriptionInput.className = 'form-control';
   const dueDateInput = document.createElement('input');
   dueDateInput.setAttribute('type', 'date');
   dueDateInput.setAttribute('id', 'dueDate');
+  dueDateInput.setAttribute('placeholder', 'Enter dueDate');
+  dueDateInput.className = 'form-control';
   const prioritySelect = document.createElement('select');
   prioritySelect.setAttribute('id', 'priority');
+  prioritySelect.className = 'form-control';
   const priorities = [
     'High',
     'Medium',
