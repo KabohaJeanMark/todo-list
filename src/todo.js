@@ -13,7 +13,7 @@ const projectTodos = document.getElementById('projectTodos');
 
 const todoDetail = document.getElementById('todo-detail');
 
-function displayTodoDetails(todo) {
+const displayTodoDetails = (todo) => {
   todoDetail.textContent = '';
 
   const todoDetailCard = document.createElement('div');
@@ -39,9 +39,9 @@ function displayTodoDetails(todo) {
   todoDetailCard.appendChild(detailPriority);
 
   todoDetail.appendChild(todoDetailCard);
-}
+};
 
-function createTodoCard(todo) {
+const createTodoCard = (todo) => {
   const div = document.createElement('div');
   const todoItem = document.createElement('span');
   todoItem.textContent = todo.title;
@@ -54,17 +54,17 @@ function createTodoCard(todo) {
   div.appendChild(todoItem);
   div.appendChild(todoDetailBtn);
   return div;
-}
+};
 
-function displayTodos(project) {
+const displayTodos = (project) => {
   projectTodos.textContent = '';
   project.toDoList.forEach((todo) => {
     const todoCard = createTodoCard(todo);
     projectTodos.appendChild(todoCard);
   });
-}
+};
 
-function createToDo(project) {
+const createToDo = (project) => {
   const title = document.getElementById('title').value;
   const description = document.getElementById('description').value;
   const dueDate = document.getElementById('dueDate').value;
@@ -72,9 +72,9 @@ function createToDo(project) {
   const addedTodo = new Todo(title, description, dueDate, priority);
   project.toDoList.push(addedTodo);
   displayTodos(project);
-}
+};
 
-function newTodoForm(project) {
+const newTodoForm = (project) => {
   const newForm = document.createElement('form');
   const titleInput = document.createElement('input');
   titleInput.setAttribute('type', 'text');
@@ -123,6 +123,6 @@ function newTodoForm(project) {
     newForm.style.display = 'none';
   });
   return newForm;
-}
+};
 
 export { newTodoForm, displayTodos };
