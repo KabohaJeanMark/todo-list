@@ -13,7 +13,11 @@ const projectTodos = document.getElementById('projectTodos');
 
 const todoDetail = document.getElementById('todo-detail');
 
-const displayTodoDetails = (todo) => {
+const deleteTodo = (todo, project) => {
+ //
+};
+
+const displayTodoDetails = (todo, project) => {
   todoDetail.textContent = '';
 
   const todoDetailCard = document.createElement('div');
@@ -31,17 +35,24 @@ const displayTodoDetails = (todo) => {
   detailDueDate.textContent = todo.dueDate;
   const detailPriority = document.createElement('p');
   detailPriority.className = 'card-text';
-  detailPriority.textContent = todo.priority;
+  detailPriority.textContent = `Priority: ${todo.priority}`;
 
-  todoDetailCard.appendChild(detailTitle);
-  todoDetailCard.appendChild(detailDescription);
-  todoDetailCard.appendChild(detailDueDate);
-  todoDetailCard.appendChild(detailPriority);
+  const updateTodoBtn = document.createElement('button');
+  updateTodoBtn.classList.add('btn', 'btn-warning', 'm-1');
+  updateTodoBtn.textContent = 'Update';
 
+  const deleteTodoBtn = document.createElement('button');
+  deleteTodoBtn.classList.add('btn', 'btn-danger', 'm-1');
+  deleteTodoBtn.textContent = 'Delete';
+  deleteTodoBtn.addEventListener('click', () => {
+    deleteTodo(todo, project);
+  });
+
+  todoDetailCard.append(detailTitle, detailDescription, detailDueDate, detailPriority, updateTodoBtn, deleteTodoBtn);
   todoDetail.appendChild(todoDetailCard);
 };
 
-const createTodoCard = (todo) => {
+const createTodoCard = (todo, project) => {
   const div = document.createElement('div');
   const todoItem = document.createElement('span');
   todoItem.textContent = todo.title;
@@ -49,7 +60,7 @@ const createTodoCard = (todo) => {
   todoDetailBtn.classList.add('btn', 'btn-success', 'm-1', 'displayer');
   todoDetailBtn.textContent = 'details';
   todoDetailBtn.addEventListener('click', () => {
-    displayTodoDetails(todo);
+    displayTodoDetails(todo, project);
   });
   div.appendChild(todoItem);
   div.appendChild(todoDetailBtn);
@@ -59,7 +70,7 @@ const createTodoCard = (todo) => {
 const displayTodos = (project) => {
   projectTodos.textContent = '';
   project.toDoList.forEach((todo) => {
-    const todoCard = createTodoCard(todo);
+    const todoCard = createTodoCard(todo, project);
     projectTodos.appendChild(todoCard);
   });
 };
