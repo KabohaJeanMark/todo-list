@@ -15,6 +15,55 @@ const projectTodos = document.getElementById('projectTodos');
 
 const todoDetail = document.getElementById('todo-detail');
 
+let updateTodo;
+
+const updateTodoForm = (todo, project) => {
+  const updateForm = document.createElement('form');
+  const titleInput = document.createElement('input');
+  titleInput.setAttribute('type', 'text');
+  titleInput.setAttribute('id', 'title');
+  titleInput.setAttribute('placeholder', todo.title);
+  titleInput.className = 'form-control';
+  const descriptionInput = document.createElement('input');
+  descriptionInput.setAttribute('type', 'text');
+  descriptionInput.setAttribute('id', 'description');
+  descriptionInput.setAttribute('placeholder', todo.description);
+  descriptionInput.className = 'form-control';
+  const dueDateInput = document.createElement('input');
+  dueDateInput.setAttribute('type', 'date');
+  dueDateInput.setAttribute('id', 'dueDate');
+  dueDateInput.setAttribute('placeholder', todo.dueDate);
+  dueDateInput.className = 'form-control';
+  const prioritySelect = document.createElement('select');
+  prioritySelect.setAttribute('id', 'priority');
+  prioritySelect.className = 'form-control';
+  const priorities = [
+    'High',
+    'Medium',
+    'Low',
+  ];
+  const options = priorities.map((priority) => {
+    const value = priority.toLowerCase();
+    return `<option value="${value}">${priority}</option>`;
+  });
+  prioritySelect.innerHTML = options;
+
+  const submitToDo = document.createElement('input');
+  submitToDo.setAttribute('type', 'submit');
+  submitToDo.classList.add('btn', 'btn-success', 'm-1');
+
+  updateForm.append(titleInput, descriptionInput, dueDateInput, prioritySelect, submitToDo);
+
+  todoDetail.appendChild(updateForm);
+
+  updateForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    updateTodo(todo, project);
+    updateForm.remove();
+  });
+  return todoDetail;
+};
+
 const displayTodoDetails = (todo, project) => {
   todoDetail.textContent = '';
 
@@ -45,6 +94,9 @@ const displayTodoDetails = (todo, project) => {
   const updateTodoBtn = document.createElement('button');
   updateTodoBtn.classList.add('btn', 'btn-warning', 'm-1');
   updateTodoBtn.textContent = 'Update';
+  updateTodoBtn.addEventListener('click', () => {
+    updateTodoForm(todo, project);
+  });
 
   const deleteTodoBtn = document.createElement('button');
   deleteTodoBtn.classList.add('btn', 'btn-danger', 'm-1');
@@ -56,6 +108,14 @@ const displayTodoDetails = (todo, project) => {
   todoDetailCard.append(detailTitle, detailDescription, detailDueDate, detailPriority);
   todoDetailCard.append(updateTodoBtn, deleteTodoBtn);
   todoDetail.appendChild(todoDetailCard);
+};
+
+updateTodo = (todo, project) => {
+  todo.title = document.getElementById('title').value;
+  todo.description = document.getElementById('description').value;
+  todo.dueDate = document.getElementById('dueDate').value;
+  todo.priority = document.getElementById('priority').value;
+  displayTodoDetails(todo, project);
 };
 
 const createTodoCard = (todo, project) => {
