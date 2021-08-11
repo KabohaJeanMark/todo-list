@@ -11,6 +11,36 @@ const todoForm = document.getElementById('todo-form');
 
 const projectTodos = document.getElementById('projectTodos');
 
+const todoDetail = document.getElementById('todo-detail');
+
+function displayTodoDetails(todo) {
+  todoDetail.textContent = '';
+
+  const todoDetailCard = document.createElement('div');
+  todoDetailCard.classList.add('card', 'p-2', 'm-1');
+
+  const detailTitle = document.createElement('h4');
+  detailTitle.className = 'card-title';
+  detailTitle.textContent = todo.title;
+
+  const detailDescription = document.createElement('p');
+  detailDescription.className = 'card-text';
+  detailDescription.textContent = todo.description;
+  const detailDueDate = document.createElement('p');
+  detailDueDate.className = 'card-text';
+  detailDueDate.textContent = todo.dueDate;
+  const detailPriority = document.createElement('p');
+  detailPriority.className = 'card-text';
+  detailPriority.textContent = todo.priority;
+
+  todoDetailCard.appendChild(detailTitle);
+  todoDetailCard.appendChild(detailDescription);
+  todoDetailCard.appendChild(detailDueDate);
+  todoDetailCard.appendChild(detailPriority);
+
+  todoDetail.appendChild(todoDetailCard);
+}
+
 function createTodoCard(todo) {
   const div = document.createElement('div');
   const todoItem = document.createElement('span');
