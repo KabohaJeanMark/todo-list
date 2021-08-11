@@ -13,14 +13,6 @@ const projectTodos = document.getElementById('projectTodos');
 
 const todoDetail = document.getElementById('todo-detail');
 
-const deleteTodo = (todo, project) => {
-  const todoIndex = project.toDoList.indexOf(todo);
-  project.toDoList.splice(todoIndex, 1);
-  todoDetail.textContent = '';
-  console.log(project.toDoList);
-  displayTodos(project);
-};
-
 const displayTodoDetails = (todo, project) => {
   todoDetail.textContent = '';
 
@@ -41,6 +33,14 @@ const displayTodoDetails = (todo, project) => {
   detailPriority.className = 'card-text';
   detailPriority.textContent = `Priority: ${todo.priority}`;
 
+  const deleteTodo = (todo, project, displayTodos) => {
+    const todoIndex = project.toDoList.indexOf(todo);
+    project.toDoList.splice(todoIndex, 1);
+    todoDetail.textContent = '';
+    console.log(project.toDoList);
+    displayTodos(project);
+  };
+
   const updateTodoBtn = document.createElement('button');
   updateTodoBtn.classList.add('btn', 'btn-warning', 'm-1');
   updateTodoBtn.textContent = 'Update';
@@ -49,7 +49,7 @@ const displayTodoDetails = (todo, project) => {
   deleteTodoBtn.classList.add('btn', 'btn-danger', 'm-1');
   deleteTodoBtn.textContent = 'Delete';
   deleteTodoBtn.addEventListener('click', () => {
-    deleteTodo(todo, project);
+    deleteTodo(todo, project, displayTodos);
   });
 
   todoDetailCard.append(detailTitle, detailDescription, detailDueDate, detailPriority);
