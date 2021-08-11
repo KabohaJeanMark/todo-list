@@ -14,7 +14,11 @@ const projectTodos = document.getElementById('projectTodos');
 const todoDetail = document.getElementById('todo-detail');
 
 const deleteTodo = (todo, project) => {
- //
+  const todoIndex = project.toDoList.indexOf(todo);
+  project.toDoList.splice(todoIndex, 1);
+  todoDetail.textContent = '';
+  console.log(project.toDoList);
+  displayTodos(project);
 };
 
 const displayTodoDetails = (todo, project) => {
@@ -48,7 +52,8 @@ const displayTodoDetails = (todo, project) => {
     deleteTodo(todo, project);
   });
 
-  todoDetailCard.append(detailTitle, detailDescription, detailDueDate, detailPriority, updateTodoBtn, deleteTodoBtn);
+  todoDetailCard.append(detailTitle, detailDescription, detailDueDate, detailPriority);
+  todoDetailCard.append(updateTodoBtn, deleteTodoBtn);
   todoDetail.appendChild(todoDetailCard);
 };
 
@@ -77,11 +82,14 @@ const displayTodos = (project) => {
 
 const createToDo = (project) => {
   const title = document.getElementById('title').value;
+  console.log(title);
   const description = document.getElementById('description').value;
   const dueDate = document.getElementById('dueDate').value;
   const priority = document.getElementById('priority').value;
   const addedTodo = new Todo(title, description, dueDate, priority);
+  console.log(addedTodo);
   project.toDoList.push(addedTodo);
+  console.log(project.toDoList);
   displayTodos(project);
 };
 
@@ -132,6 +140,7 @@ const newTodoForm = (project) => {
     e.preventDefault();
     createToDo(project);
     newForm.style.display = 'none';
+    newForm.reset();
   });
   return newForm;
 };
