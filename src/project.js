@@ -38,16 +38,10 @@ const createProjectCard = (project) => {
 };
 
 const displayAllProjects = () => {
-  if (!projectList.length) {
-    const p2 = document.createElement('p');
-    p2.textContent = 'There are currently no books';
-    allprojects.appendChild(p2);
-  } else {
-    projectList.forEach((project) => {
-      const projectCard = createProjectCard(project);
-      allprojects.appendChild(projectCard);
-    });
-  }
+  projectList.forEach((project) => {
+    const projectCard = createProjectCard(project);
+    allprojects.appendChild(projectCard);
+  });
 };
 
 const createProject = () => {
