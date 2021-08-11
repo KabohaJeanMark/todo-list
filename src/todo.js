@@ -67,8 +67,7 @@ const createTodoCard = (todo, project) => {
   todoDetailBtn.addEventListener('click', () => {
     displayTodoDetails(todo, project);
   });
-  div.appendChild(todoItem);
-  div.appendChild(todoDetailBtn);
+  div.append(todoItem, todoDetailBtn);
   return div;
 };
 
@@ -128,21 +127,16 @@ const newTodoForm = (project) => {
   submitToDo.setAttribute('type', 'submit');
   submitToDo.classList.add('btn', 'btn-success', 'm-1');
 
-  newForm.appendChild(titleInput);
-  newForm.appendChild(descriptionInput);
-  newForm.appendChild(dueDateInput);
-  newForm.appendChild(prioritySelect);
-  newForm.appendChild(submitToDo);
+  newForm.append(titleInput, descriptionInput, dueDateInput, prioritySelect, submitToDo);
 
   todoForm.appendChild(newForm);
 
   newForm.addEventListener('submit', (e) => {
     e.preventDefault();
     createToDo(project);
-    newForm.style.display = 'none';
-    newForm.reset();
+    newForm.remove();
   });
-  return newForm;
+  return todoForm;
 };
 
 export { newTodoForm, displayTodos };

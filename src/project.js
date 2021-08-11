@@ -33,8 +33,7 @@ const createProjectCard = (project) => {
     newTodoForm(project);
   });
 
-  div.appendChild(projectName);
-  div.appendChild(addProjectTodo);
+  div.append(projectName, addProjectTodo);
   return div;
 };
 
