@@ -18,7 +18,7 @@ projectList.push(defaultProject);
 
 const allprojects = document.getElementById('all-projects');
 
-function createProjectCard(project) {
+const createProjectCard = (project) => {
   const div = document.createElement('div');
   div.classList.add('m-2', 'p-1');
   const projectName = document.createElement('span');
@@ -36,9 +36,9 @@ function createProjectCard(project) {
   div.appendChild(projectName);
   div.appendChild(addProjectTodo);
   return div;
-}
+};
 
-function displayAllProjects() {
+const displayAllProjects = () => {
   if (!projectList.length) {
     const p2 = document.createElement('p');
     p2.textContent = 'There are currently no books';
@@ -49,7 +49,7 @@ function displayAllProjects() {
       allprojects.appendChild(projectCard);
     });
   }
-}
+};
 
 const createProject = () => {
   const name = document.getElementById('name').value;
