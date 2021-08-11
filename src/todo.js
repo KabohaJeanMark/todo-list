@@ -18,6 +18,9 @@ function createTodoCard(todo) {
   const todoDetailBtn = document.createElement('button');
   todoDetailBtn.classList.add('btn', 'btn-success', 'm-1', 'displayer');
   todoDetailBtn.textContent = 'details';
+  todoDetailBtn.addEventListener('click', () => {
+    displayTodoDetails(todo);
+  });
   div.appendChild(todoItem);
   div.appendChild(todoDetailBtn);
   return div;
