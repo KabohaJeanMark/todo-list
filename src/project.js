@@ -1,4 +1,4 @@
-import { newTodoForm, displayTodos } from './todo';
+import { newTodoForm, displayTodosFunction } from './todo';
 
 class Project {
   constructor(name) {
@@ -24,7 +24,7 @@ const createProjectCard = (project) => {
   const projectName = document.createElement('span');
   projectName.textContent = project.name;
   projectName.addEventListener('click', () => {
-    displayTodos(project);
+    displayTodosFunction(project);
   });
   const addProjectTodo = document.createElement('button');
   addProjectTodo.classList.add('btn', 'btn-success', 'm-1');

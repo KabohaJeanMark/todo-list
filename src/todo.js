@@ -7,6 +7,8 @@ class Todo {
   }
 }
 
+let displayTodos;
+
 const todoForm = document.getElementById('todo-form');
 
 const projectTodos = document.getElementById('projectTodos');
@@ -33,11 +35,10 @@ const displayTodoDetails = (todo, project) => {
   detailPriority.className = 'card-text';
   detailPriority.textContent = `Priority: ${todo.priority}`;
 
-  const deleteTodo = (todo, project, displayTodos) => {
+  const deleteTodo = (todo, project) => {
     const todoIndex = project.toDoList.indexOf(todo);
     project.toDoList.splice(todoIndex, 1);
     todoDetail.textContent = '';
-    console.log(project.toDoList);
     displayTodos(project);
   };
 
@@ -49,7 +50,7 @@ const displayTodoDetails = (todo, project) => {
   deleteTodoBtn.classList.add('btn', 'btn-danger', 'm-1');
   deleteTodoBtn.textContent = 'Delete';
   deleteTodoBtn.addEventListener('click', () => {
-    deleteTodo(todo, project, displayTodos);
+    deleteTodo(todo, project);
   });
 
   todoDetailCard.append(detailTitle, detailDescription, detailDueDate, detailPriority);
@@ -71,7 +72,7 @@ const createTodoCard = (todo, project) => {
   return div;
 };
 
-const displayTodos = (project) => {
+displayTodos = (project) => {
   projectTodos.textContent = '';
   project.toDoList.forEach((todo) => {
     const todoCard = createTodoCard(todo, project);
@@ -81,16 +82,15 @@ const displayTodos = (project) => {
 
 const createToDo = (project) => {
   const title = document.getElementById('title').value;
-  console.log(title);
   const description = document.getElementById('description').value;
   const dueDate = document.getElementById('dueDate').value;
   const priority = document.getElementById('priority').value;
   const addedTodo = new Todo(title, description, dueDate, priority);
-  console.log(addedTodo);
   project.toDoList.push(addedTodo);
-  console.log(project.toDoList);
   displayTodos(project);
 };
+
+const displayTodosFunction = displayTodos;
 
 const newTodoForm = (project) => {
   const newForm = document.createElement('form');
@@ -139,4 +139,4 @@ const newTodoForm = (project) => {
   return todoForm;
 };
 
-export { newTodoForm, displayTodos };
+export { newTodoForm, displayTodosFunction };
