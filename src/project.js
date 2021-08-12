@@ -13,7 +13,7 @@ class Project {
 
 const defaultProject = new Project('Default');
 
-function getProjectsFromLocalStorage() {
+const getProjectsFromLocalStorage = () => {
   let projects;
   const localStorageProjects = localStorage.getItem('projects');
   if (localStorageProjects === null) {
@@ -25,14 +25,14 @@ function getProjectsFromLocalStorage() {
     projects = JSON.parse(localStorageProjects);
   }
   return projects;
-}
+};
 
-function addProjectToLocalStorage(newProject) {
+const addProjectToLocalStorage = (newProject) => {
   const projects = getProjectsFromLocalStorage();
   projects.push(newProject);
 
   localStorage.setItem('projects', JSON.stringify(projects));
-}
+};
 
 const allprojects = document.getElementById('all-projects');
 
@@ -68,17 +68,15 @@ const displayAllProjects = () => {
 const createProject = () => {
   const name = document.getElementById('name').value;
   const newProject = new Project(name);
-  // create function to add newProject to local storage
   addProjectToLocalStorage(newProject);
-  // projectList.push(newProject);
   allprojects.textContent = '';
   displayAllProjects();
   return newProject;
 };
 
-function localStorageOnLoad() {
+const localStorageOnLoad = () => {
   displayAllProjects();
-}
+};
 
 document.addEventListener('DOMContentLoaded', localStorageOnLoad);
 
