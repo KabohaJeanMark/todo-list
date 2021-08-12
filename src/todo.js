@@ -1,3 +1,5 @@
+import { todoForm, projectTodos, todoDetail } from './todoDom';
+
 class Todo {
   constructor(title, description, dueDate, priority) {
     this.title = title;
@@ -8,12 +10,6 @@ class Todo {
 }
 
 let displayTodos;
-
-const todoForm = document.getElementById('todo-form');
-
-const projectTodos = document.getElementById('projectTodos');
-
-const todoDetail = document.getElementById('todo-detail');
 
 let updateTodo;
 
