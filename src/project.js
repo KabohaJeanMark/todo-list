@@ -11,8 +11,6 @@ class Project {
   }
 }
 
-// const projectList = JSON.parse(localStorage.getItem('projects')) || [];
-
 const defaultProject = new Project('Default');
 
 function getProjectsFromLocalStorage() {
@@ -77,5 +75,11 @@ const createProject = () => {
   displayAllProjects();
   return newProject;
 };
+
+function localStorageOnLoad() {
+  displayAllProjects();
+}
+
+document.addEventListener('DOMContentLoaded', localStorageOnLoad);
 
 export default createProject;
