@@ -85,8 +85,8 @@ const displayTodoDetails = (todo, project) => {
   detailPriority.textContent = `Priority: ${todo.priority}`;
 
   const deleteTodo = (todo, project) => {
-    const todoIndex = project.toDoList.indexOf(todo);
-    project.toDoList.splice(todoIndex, 1);
+    const todoIndex = project.listOfTodos.indexOf(todo);
+    project.listOfTodos.splice(todoIndex, 1);
     todoDetail.textContent = '';
     displayTodos(project);
   };
@@ -134,7 +134,7 @@ const createTodoCard = (todo, project) => {
 
 displayTodos = (project) => {
   projectTodos.textContent = '';
-  project.toDoList.forEach((todo) => {
+  project.listOfTodos.forEach((todo) => {
     const todoCard = createTodoCard(todo, project);
     projectTodos.appendChild(todoCard);
   });
@@ -146,7 +146,8 @@ const createToDo = (project) => {
   const dueDate = document.getElementById('dueDate').value;
   const priority = document.getElementById('priority').value;
   const addedTodo = new Todo(title, description, dueDate, priority);
-  project.toDoList.push(addedTodo);
+  console.log(project.listOfTodos);
+  project.listOfTodos.push(addedTodo);
   displayTodos(project);
 };
 

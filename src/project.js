@@ -11,10 +11,30 @@ class Project {
   }
 }
 
-const projectList = [];
+// const projectList = JSON.parse(localStorage.getItem('projects')) || [];
 
 const defaultProject = new Project('Default');
-projectList.push(defaultProject);
+
+function getProjectsFromLocalStorage() {
+  let projects;
+  const localStorageProjects = localStorage.getItem('projects');
+  if (localStorageProjects === null) {
+    projects = [];
+    projects.push(defaultProject);
+    localStorage.setItem('projects', JSON.stringify(projects));
+    projects = JSON.parse(projects);
+  } else {
+    projects = JSON.parse(localStorageProjects);
+  }
+  return projects;
+}
+
+function addProjectToLocalStorage(newProject) {
+  const projects = getProjectsFromLocalStorage();
+  projects.push(newProject);
+
+  localStorage.setItem('projects', JSON.stringify(projects));
+}
 
 const allprojects = document.getElementById('all-projects');
 
@@ -38,7 +58,10 @@ const createProjectCard = (project) => {
 };
 
 const displayAllProjects = () => {
-  projectList.forEach((project) => {
+  const projects = getProjectsFromLocalStorage();
+  console.log(projects);
+  projects.forEach((project) => {
+    console.log(project);
     const projectCard = createProjectCard(project);
     allprojects.appendChild(projectCard);
   });
@@ -47,7 +70,9 @@ const displayAllProjects = () => {
 const createProject = () => {
   const name = document.getElementById('name').value;
   const newProject = new Project(name);
-  projectList.push(newProject);
+  // create function to add newProject to local storage
+  addProjectToLocalStorage(newProject);
+  // projectList.push(newProject);
   allprojects.textContent = '';
   displayAllProjects();
   return newProject;
