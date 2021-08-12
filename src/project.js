@@ -57,9 +57,7 @@ const createProjectCard = (project) => {
 
 const displayAllProjects = () => {
   const projects = getProjectsFromLocalStorage();
-  console.log(projects);
   projects.forEach((project) => {
-    console.log(project);
     const projectCard = createProjectCard(project);
     allprojects.appendChild(projectCard);
   });

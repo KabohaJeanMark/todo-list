@@ -146,7 +146,6 @@ const createToDo = (project) => {
   const dueDate = document.getElementById('dueDate').value;
   const priority = document.getElementById('priority').value;
   const addedTodo = new Todo(title, description, dueDate, priority);
-  console.log(project.listOfTodos);
   project.listOfTodos.push(addedTodo);
   displayTodos(project);
 };
