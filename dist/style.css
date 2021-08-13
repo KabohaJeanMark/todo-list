@@ -1,0 +1,13 @@
+nav {
+  text-align: center;
+  color: #fff;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.displayer {
+  border-radius: 25%;
+}
