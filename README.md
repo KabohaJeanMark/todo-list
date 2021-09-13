@@ -40,6 +40,12 @@ npm run dev
 npm run watch
 ```
 
+### Testing using jest
+- To check out the tests, run the following command
+```
+npm run test
+```
+
 ### Usage
 - View with live Server in VS code or Right click and open the index.html in your browser to view.
 - Create a project using the form in the first third of the page below the heading PROJECTS.
