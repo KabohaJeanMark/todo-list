@@ -45,6 +45,7 @@ npm run watch
 ```
 npm run test
 ```
+![tests passing](src/assets/test-image.png)
 
 ### Usage
 - View with live Server in VS code or Right click and open the index.html in your browser to view.
