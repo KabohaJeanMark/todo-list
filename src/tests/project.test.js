@@ -1,6 +1,6 @@
 import { Project, createProject, projects, createProjectCard, displayAllProjects } from '../project';
 
-describe('Project tests', () => {
+describe('Project tests for creation and the constructor', () => {
   const projectName = 'test project';
   const newProject = new Project(projectName);
 
@@ -20,18 +20,6 @@ describe('Project tests', () => {
   test('constructor creates a new object with array of todos', () => {
     expect(typeof newProject.listOfTodos).toEqual('object');
   });
-
-  test('projectCard method', () => {
-    const div = document.createElement('div');
-    div.classList.add('m-2', 'p-1');
-    const projectName = document.createElement('span');
-    projectName.textContent = newProject.name;
-    const addProjectTodo = document.createElement('button');
-    addProjectTodo.classList.add('btn', 'btn-success', 'm-1');
-    addProjectTodo.textContent = '+';
-    div.append(projectName, addProjectTodo);
-    expect(createProjectCard(newProject)).toMatchObject(div);
-  });
 });
 
 describe('More unit tests for the different project methods', () => {
@@ -46,6 +34,18 @@ describe('More unit tests for the different project methods', () => {
   test('displayAllProjects shows the project added to the projects array', () => {
     displayAllProjects();
     expect(allProjects.innerHTML).toContain('Added project');
+  });
+
+  test('projectCard method', () => {
+    const div = document.createElement('div');
+    div.classList.add('m-2', 'p-1');
+    const projectName = document.createElement('span');
+    projectName.textContent = newProject.name;
+    const addProjectTodo = document.createElement('button');
+    addProjectTodo.classList.add('btn', 'btn-success', 'm-1');
+    addProjectTodo.textContent = '+';
+    div.append(projectName, addProjectTodo);
+    expect(createProjectCard(newProject)).toMatchObject(div);
   });
 
   test('new project is added to projects array already containing a default object and displayed', () => {
