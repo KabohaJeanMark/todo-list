@@ -25,7 +25,7 @@ describe('Project tests', () => {
     expect(projects.length).toBe(2);
   });
 
-  test('create project card method returns a div of that card', () => {
+  test('projectCard method', () => {
     const div = document.createElement('div');
     div.classList.add('m-2', 'p-1');
     const projectName = document.createElement('span');
