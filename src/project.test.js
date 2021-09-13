@@ -17,3 +17,9 @@ test('constructor creates a new object', () => {
   const newProject = new Project(projectName);
   expect(typeof newProject).toEqual('object');
 });
+
+test('constructor creates a new object with array of todos', () => {
+  const projectName = 'test project';
+  const newProject = new Project(projectName);
+  expect(typeof newProject.listOfTodos).toEqual('object');
+});
