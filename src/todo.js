@@ -121,13 +121,9 @@ const createTodoCard = (todo, project) => {
   const todoDetailBtn = document.createElement('button');
   todoDetailBtn.classList.add('btn', 'btn-success', 'm-1', 'displayer');
   todoDetailBtn.textContent = 'details';
-  try {
-    todoDetailBtn.addEventListener('click', () => {
-      displayTodoDetails(todo, project);
-    });
-  } catch (error) {
-    console.log(error)
-  }
+  todoDetailBtn.addEventListener('click', () => {
+    displayTodoDetails(todo, project);
+  });
   div.append(todoItem, todoDetailBtn);
   return div;
 };
@@ -199,4 +195,6 @@ const newTodoForm = (project) => {
   return todoForm;
 };
 
-export { Todo, newTodoForm, displayTodosFunction, createTodoCard, displayTodoDetails };
+export {
+  Todo, newTodoForm, displayTodosFunction, createTodoCard, displayTodoDetails,
+};

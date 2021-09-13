@@ -1,4 +1,6 @@
-import { Project, createProject, projects, createProjectCard, displayAllProjects } from '../project';
+import {
+  Project, createProject, projects, createProjectCard, displayAllProjects,
+} from '../project';
 
 describe('Project tests for creation and the constructor', () => {
   const projectName = 'test project';
@@ -51,4 +53,4 @@ describe('More unit tests for the different project methods', () => {
   test('new project is added to projects array already containing a default object and displayed', () => {
     expect(projects.length).toBe(3);
   });
-})
+});

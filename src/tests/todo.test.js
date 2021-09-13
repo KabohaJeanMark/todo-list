@@ -46,12 +46,12 @@ describe('More Unit tests for the Todo functions', () => {
     todoDetailBtn.classList.add('btn', 'btn-success', 'm-1', 'displayer');
     todoDetailBtn.textContent = 'details';
     div.append(todoItem, todoDetailBtn);
-    expect(createTodoCard(newTodo,newProject)).toMatchObject(div);
+    expect(createTodoCard(newTodo, newProject)).toMatchObject(div);
   });
 
   test('displayTodoDetails function', () => {
     const todoDetail = document.getElementById('todo-detail');
-    displayTodoDetails(newTodo,newProject);
+    displayTodoDetails(newTodo, newProject);
     expect(todoDetail.innerHTML).toContain(newTodo.title);
-  })
+  });
 });
