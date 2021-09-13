@@ -1,4 +1,4 @@
-import { Todo, createTodoCard } from '../todo';
+import { Todo, createTodoCard, displayTodoDetails } from '../todo';
 import { Project } from '../project';
 
 describe('Todo tests', () => {
@@ -31,9 +31,14 @@ describe('Todo tests', () => {
   test('created todo returns expected priority', () => {
     expect(newTodo.priority).toBe('Medium');
   });
+});
+
+describe('More Unit tests for the Todo functions', () => {
+  const newTodo = new Todo('exercise', 'swimming', '12-10-2021', 'Medium');
+  const newProject = new Project('project for Todos');
+  newProject.listOfTodos.push(newTodo);
 
   test('TodoCard function', () => {
-    const newProject = new Project('project for Todos');
     const div = document.createElement('div');
     const todoItem = document.createElement('span');
     todoItem.textContent = newTodo.title;
@@ -43,4 +48,10 @@ describe('Todo tests', () => {
     div.append(todoItem, todoDetailBtn);
     expect(createTodoCard(newTodo,newProject)).toMatchObject(div);
   });
+
+  test('displayTodoDetails function', () => {
+    const todoDetail = document.getElementById('todo-detail');
+    displayTodoDetails(newTodo,newProject);
+    expect(todoDetail.innerHTML).toContain(newTodo.title);
+  })
 });
