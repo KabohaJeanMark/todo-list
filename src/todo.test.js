@@ -24,3 +24,9 @@ test('check if created todo has wrong description', () => {
   const newTodo = new Todo('exercise','swimming', '12-10-2021', 'Medium');
   expect(newTodo.description === 'jogging').toBeFalsy();
 });
+
+test('created todo returns proper date', () => {
+  const newTodo = new Todo('exercise','swimming', '12-10-2021', 'Medium');
+  expect(newTodo.dueDate).toBe('12-10-2021');
+});
+
