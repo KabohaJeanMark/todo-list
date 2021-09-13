@@ -9,3 +9,8 @@ test('created todo has proper title', () => {
   const newTodo = new Todo('exercise','swimming', '12-10-2021', 'Medium');
   expect(newTodo.title).toBe('exercise');
 });
+
+test('created todo has wrong title', () => {
+  const newTodo = new Todo('exercise','swimming', '12-10-2021', 'Medium');
+  expect(newTodo.title === 'marching').toBeFalsy();
+});
