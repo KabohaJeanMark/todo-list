@@ -11,28 +11,32 @@ class Project {
   }
 }
 
+const projects = [];
+
 const defaultProject = new Project('Default');
 
-const getProjectsFromLocalStorage = () => {
-  let projects;
-  const localStorageProjects = localStorage.getItem('projects');
-  if (localStorageProjects === null) {
-    projects = [];
-    projects.push(defaultProject);
-    localStorage.setItem('projects', JSON.stringify(projects));
-    projects = JSON.parse(projects);
-  } else {
-    projects = JSON.parse(localStorageProjects);
-  }
-  return projects;
-};
+projects.push(defaultProject);
 
-const addProjectToLocalStorage = (newProject) => {
-  const projects = getProjectsFromLocalStorage();
-  projects.push(newProject);
+// const getProjectsFromLocalStorage = () => {
+//   let projects;
+//   const localStorageProjects = localStorage.getItem('projects');
+//   if (localStorageProjects === null) {
+//     projects = [];
+//     projects.push(defaultProject);
+//     localStorage.setItem('projects', JSON.stringify(projects));
+//     projects = JSON.parse(projects);
+//   } else {
+//     projects = JSON.parse(localStorageProjects);
+//   }
+//   return projects;
+// };
 
-  localStorage.setItem('projects', JSON.stringify(projects));
-};
+// const addProjectToLocalStorage = (newProject) => {
+//   const projects = getProjectsFromLocalStorage();
+//   projects.push(newProject);
+
+//   localStorage.setItem('projects', JSON.stringify(projects));
+// };
 
 const allprojects = document.getElementById('all-projects');
 
@@ -56,7 +60,7 @@ const createProjectCard = (project) => {
 };
 
 const displayAllProjects = () => {
-  const projects = getProjectsFromLocalStorage();
+  // const projects = getProjectsFromLocalStorage();
   projects.forEach((project) => {
     const projectCard = createProjectCard(project);
     allprojects.appendChild(projectCard);
@@ -64,11 +68,11 @@ const displayAllProjects = () => {
 };
 
 const createProject = (name) => {
-  // const name = document.getElementById('name').value;
   const newProject = new Project(name);
+  projects.push(newProject);
   // addProjectToLocalStorage(newProject);
   allprojects.textContent = '';
-  // displayAllProjects();
+  displayAllProjects();
   return newProject;
 };
 

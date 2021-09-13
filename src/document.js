@@ -50,5 +50,5 @@ document.body.innerHTML = `
 
 </body>
 </html>
-`
+`;
 export default document;

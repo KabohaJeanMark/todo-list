@@ -1,25 +1,27 @@
 import { Project, createProject } from './project';
 
-test('create method creates a new object with proper name', () => {
-  const projectName = 'test project';
-  const newProject = createProject(projectName);
-  expect(newProject.name).toBe(projectName);
-});
+describe('Project creation tests', () => {
 
-test('creates a new object with wrong name', () => {
-  const projectName = 'test project';
-  const newProject = createProject('different name');
-  expect(newProject.name === projectName).toBeFalsy();
-});
-
-test('constructor creates a new object', () => {
   const projectName = 'test project';
   const newProject = new Project(projectName);
-  expect(typeof newProject).toEqual('object');
+
+  test('create method creates a new object with proper name', () => {
+    const myProject = createProject(projectName);
+    expect(myProject.name).toBe(projectName);
+  });
+
+  test('creates a new object with wrong name', () => {
+    expect(newProject.name === 'different name').toBeFalsy();
+  });
+
+  test('constructor creates a new object', () => {
+    expect(typeof newProject).toEqual('object');
+  });
+
+  test('constructor creates a new object with array of todos', () => {
+    expect(typeof newProject.listOfTodos).toEqual('object');
+  });
 });
 
-test('constructor creates a new object with array of todos', () => {
-  const projectName = 'test project';
-  const newProject = new Project(projectName);
-  expect(typeof newProject.listOfTodos).toEqual('object');
-});
+  
+
