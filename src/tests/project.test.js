@@ -1,6 +1,6 @@
-import { Project, createProject, projects } from '../project';
+import { Project, createProject, projects, createProjectCard } from '../project';
 
-describe('Project creation tests', () => {
+describe('Project tests', () => {
   const projectName = 'test project';
   const newProject = new Project(projectName);
 
@@ -24,4 +24,16 @@ describe('Project creation tests', () => {
   test('new project is added to projects array already containing a default object', () => {
     expect(projects.length).toBe(2);
   });
+
+  test('create project card method returns a div of that card', () => {
+    const div = document.createElement('div');
+    div.classList.add('m-2', 'p-1');
+    const projectName = document.createElement('span');
+    projectName.textContent = newProject.name;
+    const addProjectTodo = document.createElement('button');
+    addProjectTodo.classList.add('btn', 'btn-success', 'm-1');
+    addProjectTodo.textContent = '+';
+    div.append(projectName, addProjectTodo);
+    expect(createProjectCard(newProject)).toMatchObject(div);
+  })
 });

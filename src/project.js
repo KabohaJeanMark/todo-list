@@ -59,4 +59,4 @@ const localStorageOnLoad = () => {
 
 document.addEventListener('DOMContentLoaded', localStorageOnLoad);
 
-export { Project, createProject, projects };
+export { Project, createProject, projects, createProjectCard };
