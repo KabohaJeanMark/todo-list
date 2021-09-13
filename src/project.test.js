@@ -11,3 +11,9 @@ test('creates a new object with wrong name', () => {
   const newProject = createProject('different name');
   expect(newProject.name === projectName).toBeFalsy();
 });
+
+test('constructor creates a new object', () => {
+  const projectName = 'test project';
+  const newProject = new Project(projectName);
+  expect(typeof newProject).toEqual('object');
+});
