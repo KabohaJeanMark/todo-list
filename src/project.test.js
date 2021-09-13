@@ -22,6 +22,3 @@ describe('Project creation tests', () => {
     expect(typeof newProject.listOfTodos).toEqual('object');
   });
 });
-
-  
-
