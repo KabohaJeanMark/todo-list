@@ -1,7 +1,6 @@
-import { Project, createProject } from './project';
+import { Project, createProject, projects } from '../project';
 
 describe('Project creation tests', () => {
-
   const projectName = 'test project';
   const newProject = new Project(projectName);
 
@@ -20,5 +19,9 @@ describe('Project creation tests', () => {
 
   test('constructor creates a new object with array of todos', () => {
     expect(typeof newProject.listOfTodos).toEqual('object');
+  });
+
+  test('new project is added to projects array already containing a default object', () => {
+    expect(projects.length).toBe(2);
   });
 });
