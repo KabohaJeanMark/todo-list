@@ -1,4 +1,4 @@
-import { Project, createProject, projects, createProjectCard } from '../project';
+import { Project, createProject, projects, createProjectCard, displayAllProjects } from '../project';
 
 describe('Project tests', () => {
   const projectName = 'test project';
@@ -21,10 +21,6 @@ describe('Project tests', () => {
     expect(typeof newProject.listOfTodos).toEqual('object');
   });
 
-  test('new project is added to projects array already containing a default object', () => {
-    expect(projects.length).toBe(2);
-  });
-
   test('projectCard method', () => {
     const div = document.createElement('div');
     div.classList.add('m-2', 'p-1');
@@ -35,5 +31,24 @@ describe('Project tests', () => {
     addProjectTodo.textContent = '+';
     div.append(projectName, addProjectTodo);
     expect(createProjectCard(newProject)).toMatchObject(div);
-  })
+  });
 });
+
+describe('More unit tests for the different project methods', () => {
+  const newProject = createProject('Added project');
+  const allProjects = document.getElementById('all-projects');
+
+  test('displayAllProjects shows the Default project', () => {
+    displayAllProjects();
+    expect(allProjects.innerHTML).toContain('Default');
+  });
+
+  test('displayAllProjects shows the project added to the projects array', () => {
+    displayAllProjects();
+    expect(allProjects.innerHTML).toContain('Added project');
+  });
+
+  test('new project is added to projects array already containing a default object and displayed', () => {
+    expect(projects.length).toBe(3);
+  });
+})
