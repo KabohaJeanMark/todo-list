@@ -30,3 +30,8 @@ test('created todo returns proper date', () => {
   expect(newTodo.dueDate).toBe('12-10-2021');
 });
 
+test('created todo returns expected priority', () => {
+  const newTodo = new Todo('exercise','swimming', '12-10-2021', 'Medium');
+  expect(newTodo.priority).toBe('Medium');
+});
+
