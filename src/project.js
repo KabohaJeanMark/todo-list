@@ -63,12 +63,12 @@ const displayAllProjects = () => {
   });
 };
 
-const createProject = () => {
-  const name = document.getElementById('name').value;
+const createProject = (name) => {
+  // const name = document.getElementById('name').value;
   const newProject = new Project(name);
-  addProjectToLocalStorage(newProject);
+  // addProjectToLocalStorage(newProject);
   allprojects.textContent = '';
-  displayAllProjects();
+  // displayAllProjects();
   return newProject;
 };
 
@@ -78,4 +78,4 @@ const localStorageOnLoad = () => {
 
 document.addEventListener('DOMContentLoaded', localStorageOnLoad);
 
-export default createProject;
+export { Project, createProject };
