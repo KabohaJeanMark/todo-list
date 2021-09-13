@@ -4,7 +4,7 @@
   "description": "A JS todo-list application that groups todos inside project lists. Set up with webpack for modern JS capabilities using DOM manipulation.",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --env=jsdom",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "watch": "webpack --watch"
