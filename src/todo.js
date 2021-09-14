@@ -195,4 +195,6 @@ const newTodoForm = (project) => {
   return todoForm;
 };
 
-export { newTodoForm, displayTodosFunction };
+export {
+  Todo, newTodoForm, displayTodosFunction, createTodoCard, displayTodoDetails,
+};

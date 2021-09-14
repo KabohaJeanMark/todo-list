@@ -4,7 +4,7 @@
   "description": "A JS todo-list application that groups todos inside project lists. Set up with webpack for modern JS capabilities using DOM manipulation.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --env=jsdom",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "watch": "webpack --watch"
@@ -21,10 +21,12 @@
   },
   "homepage": "https://github.com/KabohaJeanMark/todo-list#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
+    "jest": "^27.1.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
